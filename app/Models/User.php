@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const IS_BANNED = 1;
+
+    const IS_ACTIV = 0;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -48,4 +52,96 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public static function add($fields)
+    {
+        $user = new static;
+        $user->fill($fields);
+        $user->password = bcrypt($fields->password);
+        $user->save();
+        return $user;
+    }
+
+    public function edit($fields)
+    {
+        $this->fill($fields);
+        $this->password = bcrypt($fields->password);
+        $this->save();
+    }
+
+    public function remove()
+    {
+        Storage::delete($this->image);
+        $this->delete();
+    }
+
+    public function uploadAvatar($image)
+    {
+        if ($image == null) { return;}
+
+        Storage::delete($this->image);
+        $fileName = $image->store('user');
+        $this->image = $fileName;
+        $this->save();
+
+    }
+
+    public function makeAdmin()
+    {
+        $this->is_admin = 1;
+        $this->save();
+    }
+
+    public function makeNormal()
+    {
+        $this->is_admin = 0;
+        $this->save();
+    }
+
+    public function toggleUser($value)
+    {
+        if($value == null){
+
+            return $this->makeNormal();
+
+        }
+
+        return $this->makeAdmin();
+
+    }
+
+    public function makeStatusBan()
+    {
+        $this->status = User::IS_BANNED;
+        $this->save();
+    }
+
+    public function makeStatusUnBan()
+    {
+        $this->status = User::IS_ACTIV;
+        $this->save();
+    }
+
+    public function toggleBan($value)
+    {
+        if($value == null){
+
+            return $this->makeStatusUnBan();
+
+        }
+
+        return $this->makeStatusBan();
+
+    }
+
+    public function getImages($images)
+    {
+        if($images == null ){
+            return '/storage/user/defaul_user.png';
+        }
+
+        return $images;
+
+    }
+
 }

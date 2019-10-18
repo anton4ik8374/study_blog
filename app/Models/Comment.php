@@ -25,4 +25,31 @@ class Comment extends Model
     {
         return $this->hasOne(Post::class);
     }
+
+    public function allow()
+    {
+        $this->status = 1;
+        $this->save();
+    }
+
+    public function ban()
+    {
+        $this->status = 0;
+        $this->save();
+    }
+
+    public function toggleStatud()
+    {
+        if($this->status == 0){
+            return $this->allow();
+        }
+
+        return $this->ban();
+
+    }
+
+    public function remove()
+    {
+        $this->delete();
+    }
 }
