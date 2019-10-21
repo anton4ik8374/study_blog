@@ -21,7 +21,7 @@
           @include('admin.errors')
         </div>
         <div class="box-body">
-        {{Form::open(['route'=>['categories.update',$category->id], 'method'=>'put'])}}
+        {{Form::open(['route'=>['category.update',$category->id], 'method'=>'put'])}}
           <div class="col-md-6">
             <div class="form-group">
               <label for="exampleInputEmail1">Название</label>

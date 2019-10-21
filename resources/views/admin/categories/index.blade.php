@@ -27,7 +27,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="form-group">
-                <a href="{{route('categories.create')}}" class="btn btn-success">Добавить</a>
+                <a href="{{route('category.create')}}" class="btn btn-success">Добавить</a>
               </div>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -42,9 +42,9 @@
 					<tr>
 	                  <td>{{$category->id}}</td>
 	                  <td>{{$category->title}}</td>
-	                  <td><a href="{{route('categories.edit', $category->id)}}" class="fa fa-pencil"></a>
+	                  <td><a href="{{route('category.edit', $category->id)}}" class="fa fa-pencil"></a>
 
-	                  {{Form::open(['route'=>['categories.destroy', $category->id], 'method'=>'delete'])}}
+	                  {{Form::open(['route'=>['category.destroy', $category->id], 'method'=>'delete'])}}
 	                  <button onclick="return confirm('are you sure?')" type="submit" class="delete">
 	                   <i class="fa fa-remove"></i>
 	                  </button>
