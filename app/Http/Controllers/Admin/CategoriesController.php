@@ -41,7 +41,7 @@ class CategoriesController extends Controller
     {
         Category::create($request->all());
 
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -81,7 +81,7 @@ class CategoriesController extends Controller
 
         $category->update($request->all());
 
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -95,6 +95,6 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id)->delete();
 
 
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index');
     }
 }
