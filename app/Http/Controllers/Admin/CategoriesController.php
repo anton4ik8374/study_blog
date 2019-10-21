@@ -41,7 +41,7 @@ class CategoriesController extends Controller
     {
         Category::create($request->all());
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**
