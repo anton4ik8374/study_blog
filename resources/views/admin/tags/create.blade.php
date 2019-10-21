@@ -16,7 +16,7 @@
 
       <!-- Default box -->
       <div class="box">
-      {!! Form::open(['route' => 'tags.store']) !!}
+      {!! Form::open(['route' => 'tag.store']) !!}
         <div class="box-header with-border">
           <h3 class="box-title">Добавляем тег</h3>
           @include('admin.errors')
