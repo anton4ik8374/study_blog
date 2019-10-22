@@ -134,13 +134,13 @@ class User extends Authenticatable
 
     }
 
-    public function getImages($images)
+    public function getImages()
     {
-        if($images == null ){
-            return '/storage/user/defaul_user.png';
+        if($this->images == null ){
+            return '/img/users/default_user.png';
         }
 
-        return $images;
+        return '/storage/users/' . $this->images;
 
     }
 
