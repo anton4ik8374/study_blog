@@ -27,7 +27,7 @@ class UsersRequest extends FormRequest
             'avatar' => 'nullable|image',
             'name' => 'required',
             'email' => 'required|unique:users|email',
-            'password' => 'password:web',
+            'password' => 'password',
         ];
     }
 }
