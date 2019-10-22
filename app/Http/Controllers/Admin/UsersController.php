@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UsersRequest;
+use App\Events\ImagMiniEvent;
 
 class UsersController extends Controller
 {
@@ -41,7 +42,9 @@ class UsersController extends Controller
     {
         $user = User::add($request->all());
 
-        $user->uploadAvatar($request->file('avatar'));
+        $path = $user->uploadAvatar($request->file('avatar'));
+
+        event(new ImagMiniEvent($path));
 
         return redirect()->route('users.index');
     }
