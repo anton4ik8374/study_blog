@@ -24,15 +24,19 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="exampleInputEmail1">Имя</label>
-              <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="{{old('name')}}">
+              <input type="text" name="name" class="form-control"  placeholder="" value="{{old('name')}}">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">E-mail</label>
-              <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="" value="{{old('email')}}">
+              <input type="text" name="email" class="form-control"  placeholder="" value="{{old('email')}}">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Пароль</label>
-              <input type="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="">
+              <input type="password" name="password" class="form-control"  placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Повторите Пароль</label>
+              <input type="password" name="password_confirmation" class="form-control"  placeholder="">
             </div>
             <div class="form-group">
               <label for="exampleInputFile">Аватар</label>
