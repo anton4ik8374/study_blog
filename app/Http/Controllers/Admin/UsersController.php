@@ -95,10 +95,12 @@ class UsersController extends Controller
 
         if($request->hasFile('avatar')) {
 
-            $user->deleteImages($oldFileName);
+            if($oldFileName !== null) {
 
-            $user->deleteMiniImages($oldFileName);
+                $user->deleteImages($oldFileName);
 
+                $user->deleteMiniImages($oldFileName);
+            }
             $path = $user->uploadAvatar($request->file('avatar'));
 
             event(new ImagMiniEvent($path));
