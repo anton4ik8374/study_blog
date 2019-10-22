@@ -39,7 +39,7 @@ class UsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        $user = User::add($request);
+        $user = User::add($request->all());
 
         $user->uploadAvatar($request->file('avatar'));
 
