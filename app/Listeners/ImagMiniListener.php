@@ -29,11 +29,12 @@ class ImagMiniListener
     {
 
         $img = Image::make(base_path('/storage/app/public/user/' . $event->path));
-        if ($img->resize(100, null)->save(base_path('/storage/app/public/user/mini/' . $event->path))) {
+        $img->resize(100, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save(base_path('/storage/app/public/user/mini/' . $event->path));
 
-            return true;
+        return true;
 
-        }
-        return false;
+
     }
 }
