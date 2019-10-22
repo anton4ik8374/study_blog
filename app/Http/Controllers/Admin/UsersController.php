@@ -95,9 +95,9 @@ class UsersController extends Controller
 
         if($request->hasFile('avatar')) {
 
-            Storage::delete('/user/' . $oldFileName);
+            $user->deleteImages($oldFileName);
 
-            Storage::delete('/user/mini/' . $oldFileName);
+            $user->deleteMiniImages($oldFileName);
 
             $path = $user->uploadAvatar($request->file('avatar'));
 

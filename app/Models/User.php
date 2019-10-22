@@ -159,4 +159,18 @@ class User extends Authenticatable
 
     }
 
+    public function deleteImages($name)
+    {
+        $path = '/user/';
+
+        return Storage::delete($path . $name);
+    }
+
+    public function deleteMiniImages($name)
+    {
+        $path = '/user/mini/';
+
+        return Storage::delete($path . $name);
+    }
+
 }
