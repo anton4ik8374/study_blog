@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UsersRequest;
 
 class UsersController extends Controller
 {
@@ -27,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -36,9 +37,13 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsersRequest $request)
     {
-        //
+        $user = User::add($request);
+
+        $user->uploadAvatar($request->file('avatar'));
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -70,7 +75,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersRequest $request, $id)
     {
         //
     }
