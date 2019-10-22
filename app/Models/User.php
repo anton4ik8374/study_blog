@@ -84,8 +84,10 @@ class User extends Authenticatable
             Storage::delete($this->avatar);
         }
         $fileName = $image->store('user');
-        $this->avatar = $fileName;
+        $newName = explode('/',$fileName);
+        $this->avatar = $newName[1];
         $this->save();
+        return $newName[1];
 
     }
 
@@ -139,11 +141,21 @@ class User extends Authenticatable
 
     public function getImages()
     {
-        if($this->images == null ){
+        if($this->avatar == null ){
             return '/img/users/default_user.png';
         }
 
-        return '/storage/users/' . $this->images;
+        return '/storage/user/' . $this->avatar;
+
+    }
+
+    public function getImagesMini()
+    {
+        if($this->avatar == null ){
+            return '/img/users/default_user.png';
+        }
+
+        return '/storage/user/mini' . $this->avatar;
 
     }
 
