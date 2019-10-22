@@ -29,20 +29,24 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="exampleInputEmail1">Имя</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="" value="{{$user->name}}">
+              <input type="text" class="form-control"  name="name" placeholder="" value="{{$user->name}}">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">E-mail</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" name="email" placeholder="" value="{{$user->email}}">
+              <input type="text" class="form-control"  name="email" placeholder="" value="{{$user->email}}">
             </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Пароль</label>
-              <input type="password" class="form-control" id="exampleInputEmail1" name="password" placeholder="">
+              <input type="password" class="form-control"  name="password" placeholder="">
             </div>
             <div class="form-group">
-              <img src="{{$user->getImagesMini()}}" alt="" width="200" class="img-responsive">
+              <label for="exampleInputEmail1">Повторите Пароль</label>
+              <input type="password" name="password_confirmation" class="form-control"  placeholder="">
+            </div>
+            <div class="form-group">
+              <img src="{{$user->getImagesMini()}}" alt="" width="100" class="img-responsive">
               <label for="exampleInputFile">Аватар</label>
-              <input type="file" name="avatar" id="exampleInputFile">
+              <input type="file" name="avatar">
 
               <p class="help-block">Какое-нибудь уведомление о форматах..</p>
             </div>

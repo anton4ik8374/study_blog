@@ -80,9 +80,31 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'avatar' => 'nullable|image',
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+        $user = User::find($id);
+
+        $oldFileName = $user->avatar;
+
+        $user->edit($request->all());
+
+        if($request->hasFile('avatar')) {
+
+            Storage::delete('/user/' . $oldFileName);
+
+            Storage::delete('/user/mini/' . $oldFileName);
+
+            $path = $user->uploadAvatar($request->file('avatar'));
+
+            event(new ImagMiniEvent($path));
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**
