@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin', 'status'
+        'name', 'email', 'is_admin', 'status'
     ];
 
     /**
@@ -66,7 +66,11 @@ class User extends Authenticatable
     public function edit($fields)
     {
         $this->fill($fields);
-        $this->password = bcrypt($this->password);
+
+        if($fields['password'] !== null) {
+            $this->password = bcrypt($this->password);
+        }
+
         $this->save();
     }
 

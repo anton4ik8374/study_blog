@@ -42,9 +42,12 @@ class UsersController extends Controller
     {
         $user = User::add($request->all());
 
-        $path = $user->uploadAvatar($request->file('avatar'));
+        if($request->hasFile('avatar')) {
 
-        event(new ImagMiniEvent($path));
+            $path = $user->uploadAvatar($request->file('avatar'));
+
+            event(new ImagMiniEvent($path));
+        }
 
         return redirect()->route('users.index');
     }
