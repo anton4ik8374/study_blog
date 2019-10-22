@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Post;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -79,9 +80,11 @@ class User extends Authenticatable
     {
         if ($image == null) { return;}
 
-        Storage::delete($this->image);
+        if($this->avatar !== null) {
+            Storage::delete($this->avatar);
+        }
         $fileName = $image->store('user');
-        $this->image = $fileName;
+        $this->avatar = $fileName;
         $this->save();
 
     }
