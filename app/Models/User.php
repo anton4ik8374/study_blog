@@ -78,7 +78,12 @@ class User extends Authenticatable
 
     public function remove()
     {
-        Storage::delete($this->image);
+        if($this->avatar !== null) {
+
+            $this->deleteImages($this->avatar);
+
+            $this->deleteMiniImages($this->avatar);
+        }
         $this->delete();
     }
 

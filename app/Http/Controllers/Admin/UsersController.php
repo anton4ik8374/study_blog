@@ -131,15 +131,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::find($id)->remove();
 
-        if($user->avatar !== null) {
-
-            $user->deleteImages($user->avatar);
-
-            $user->deleteMiniImages($user->avatar);
-        }
-
-        $user->delete();
+        return redirect()->route('users.index');
     }
 }
