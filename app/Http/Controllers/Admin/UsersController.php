@@ -109,6 +109,7 @@ class UsersController extends Controller
 
             event(new ImagMiniEvent($path));
         }
+        $user->toggleUser($request->is_admin)->toggleBan($request->status);
 
         return redirect()->route('users.index');
     }

@@ -114,11 +114,15 @@ class User extends Authenticatable
     {
         if($value == null){
 
-            return $this->makeNormal();
+            $this->makeNormal();
+
+            return $this;
 
         }
 
-        return $this->makeAdmin();
+        $this->makeAdmin();
+
+        return $this;
 
     }
 
@@ -138,11 +142,15 @@ class User extends Authenticatable
     {
         if($value == null){
 
-            return $this->makeStatusUnBan();
+            $this->makeStatusUnBan();
+
+            return $this;
 
         }
 
-        return $this->makeStatusBan();
+        $this->makeStatusBan();
+
+        return $this;
 
     }
 
