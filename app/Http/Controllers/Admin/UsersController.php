@@ -89,13 +89,14 @@ class UsersController extends Controller
             'avatar' => 'nullable|image',
             'name' => 'required',
             'email' => 'required|email',
+            'password' => 'nullable|string|min:8|confirmed',
         ]);
         $user = User::find($id);
 
         $oldFileName = $user->avatar;
 
         $user->edit($request->all());
-
+        $user->generatePassword($request->get('password'));
         if($request->hasFile('avatar')) {
 
             if($oldFileName !== null) {
@@ -120,6 +121,15 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        if($user->avatar !== null) {
+
+            $user->deleteImages($user->avatar);
+
+            $user->deleteMiniImages($user->avatar);
+        }
+
+        $user->delete();
     }
 }

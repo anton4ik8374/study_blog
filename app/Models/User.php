@@ -63,14 +63,17 @@ class User extends Authenticatable
         return $user;
     }
 
+    public function generatePassword($password)
+    {
+        if($password !== null) {
+            $this->password = bcrypt($password);
+            $this->save();
+        }
+    }
+
     public function edit($fields)
     {
         $this->fill($fields);
-
-        if($fields['password'] !== null) {
-            $this->password = bcrypt($this->password);
-        }
-
         $this->save();
     }
 
