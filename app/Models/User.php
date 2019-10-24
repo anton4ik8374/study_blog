@@ -58,7 +58,6 @@ class User extends Authenticatable
     {
         $user = new static;
         $user->fill($fields);
-        $user->password = bcrypt($user->password);
         $user->save();
         return $user;
     }

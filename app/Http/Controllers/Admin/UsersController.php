@@ -41,6 +41,7 @@ class UsersController extends Controller
     public function store(UsersRequest $request)
     {
         $user = User::add($request->all());
+        $user->generatePassword($request->get('password'));
 
         if($request->hasFile('avatar')) {
 
