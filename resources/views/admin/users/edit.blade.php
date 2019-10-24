@@ -54,14 +54,14 @@
                         </div>
                         <div class="form-group">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                                <input type="checkbox" name="is_admin" value="{{$user->is_admin}}" class="custom-control-input">
+                                <input type="checkbox" name="is_admin" value="{{$user->is_admin}}" {{$user->is_admin ? 'checked':''}} class="custom-control-input">
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">Администратор</span>
                             </label>
                         </div>
                         <div class="form-group">
                             <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                                <input type="checkbox" name="status" value="{{$user->status}}" class="custom-control-input">
+                                <input type="checkbox" name="status" value="{{$user->status}}" {{$user->status ? 'checked':''}} class="custom-control-input">
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">Активный</span>
                             </label>
