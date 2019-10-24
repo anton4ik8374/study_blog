@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UsersRequest;
 use App\Events\ImagMiniEvent;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
@@ -88,13 +89,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+
         $this->validate($request,[
             'avatar' => 'nullable|image',
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
             'password' => 'nullable|string|min:8|confirmed',
         ]);
-        $user = User::find($id);
 
         $oldFileName = $user->avatar;
 
