@@ -42,7 +42,22 @@
               <label for="exampleInputFile">Аватар</label>
               <input type="file" name="avatar" id="exampleInputFile">
 
-              <p class="help-block">Какое-нибудь уведомление о форматах..</p>
+              <p class="help-block">The file under validation must be an image (jpeg, png, bmp, gif, svg,
+                or webp)</p>
+            </div>
+            <div class="form-group">
+              <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                <input type="checkbox" name="is_admin" value=""  class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Администратор</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                <input type="checkbox" name="status" value="1" checked class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Активный</span>
+              </label>
             </div>
         </div>
       </div>
