@@ -26,4 +26,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware'	=> 'au
     Route::resource('/category', 'CategoriesController');
     Route::resource('/tag', 'TagController');
     Route::resource('/users', 'UsersController');
+    Route::resource('/posts', 'PostsController');
 });
