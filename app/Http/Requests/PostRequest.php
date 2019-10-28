@@ -40,7 +40,6 @@ class PostRequest extends FormRequest
     {
         return [
             'title:required'=>'Поле не может быть пустым!',
-            'title:min'=>'Минимальная длина 2 символа!'
         ];
     }
 }

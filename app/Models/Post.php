@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\User;
@@ -19,7 +20,7 @@ class Post extends Model
 
     //Атрибуты которые можно массово присваивать
     protected $fillable = [
-        'title','slug', 'content', 'category_id', 'user_id', 'status', 'views', 'is_featured'
+        'title','slug', 'content', 'category_id', 'user_id', 'status', 'views', 'is_featured', 'date'
     ];
 
     //Все поля разрешено менять
@@ -53,6 +54,7 @@ class Post extends Model
     {
         $post = new static;
         $post->fill($filds);
+        $post->user_id = 1;
         $post->save();
 
         return $post;
