@@ -173,7 +173,11 @@ class Post extends Model
 
     public function getTagsTitles()
     {
+        if($this->tags !== null) {
+            return implode(', ',$this->tags->pluck('title')->all());
+        }
 
+        return 'Нет тегов';
     }
 
     public function setDateAttribute($value)
