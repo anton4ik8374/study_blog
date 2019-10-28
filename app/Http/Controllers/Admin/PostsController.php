@@ -29,9 +29,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::select('id','name')->get()->toArray();
+        $categories = Category::pluck('id', 'title')->all();
 
-        $tags = Tag::all()->toArray();
+        $tags = Tag::pluck('id', 'title')->all();
 
         return view('admin.posts.create', compact('categories', 'tags'));
     }
