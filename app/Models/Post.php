@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Tag;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -20,7 +21,7 @@ class Post extends Model
 
     //Атрибуты которые можно массово присваивать
     protected $fillable = [
-        'title','slug', 'content', 'category_id', 'user_id', 'status', 'views', 'is_featured', 'date'
+        'title','slug', 'content', 'status', 'views', 'is_featured', 'date'
     ];
 
     //Все поля разрешено менять
@@ -165,6 +166,11 @@ class Post extends Model
     public function getTagsTitles()
     {
 
+    }
+
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = Carbon::createFromFormat('d/m/y',$value)->format('Y-m-d');
     }
 
 }
