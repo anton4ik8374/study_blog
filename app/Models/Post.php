@@ -151,10 +151,10 @@ class Post extends Model
     {
 
         if($this->image == null ){
-            return '/img/post/default_user.webp';
+            return '/img/posts/default_user.webp';
         }
 
-        return '/storage/post/' . $this->image;
+        return '/storage/posts/' . $this->image;
 
     }
 
