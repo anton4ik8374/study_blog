@@ -78,12 +78,12 @@ class Post extends Model
     {
         if ($image == null) { return;}
 
-        if($this->avatar !== null) {
-            Storage::delete($this->posts);
+        if($this->image !== null) {
+            Storage::delete($this->image);
         }
         $fileName = $image->store('posts');
         $newName = explode('/',$fileName);
-        $this->avatar = $newName[1];
+        $this->image = $newName[1];
         $this->save();
         return $newName[1];
 
@@ -175,6 +175,11 @@ class Post extends Model
     public function setDateAttribute($value)
     {
         $this->attributes['date'] = Carbon::createFromFormat('d/m/y',$value)->format('Y-m-d');
+    }
+
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = $value == 'on' ? 1 : 0;
     }
 
 }
