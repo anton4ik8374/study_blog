@@ -50,12 +50,19 @@ class PostsController extends Controller
 
         if($request->hasFile('image')) {
 
-            $name = $post->uploadAvatar($request->file('image'));
+            $name = $post->uploadImage($request->file('image'));
 
             event(new ImagMiniEvent($name, 'posts'));
+
+            $post->setCategory($request->get('category_id'));
+
+            $post->setTags($request->get('tags'));
+
+            $post->toggleStatus($request->get('status'));
+
+            $post->toggleFetured($request->get('is_featured'));
         }
 
-        $user->toggleUser($request->is_admin)->toggleBan($request->status);
         return redirect()->route('posts.index');
     }
 
