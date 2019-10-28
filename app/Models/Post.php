@@ -29,12 +29,12 @@ class Post extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function tags()
@@ -164,7 +164,11 @@ class Post extends Model
 
     public function getCategoryTitle()
     {
+        if($this->category !== null) {
+            return $this->category->title;
+        }
 
+        return 'Нет категорий'ж
     }
 
     public function getTagsTitles()
