@@ -47,7 +47,7 @@ class PostsController extends Controller
     {
         $post = Post::add($request->all());
 
-        return redirect()->route('admin.index');
+        return redirect()->route('posts.index');
     }
 
     /**
