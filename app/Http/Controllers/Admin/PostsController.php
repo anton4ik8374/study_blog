@@ -29,7 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::select('id','name')->get()->toArray();
+        $categories = Category::select('id','title')->get()->toArray();
 
         $tags = Tag::all()->toArray();
 
