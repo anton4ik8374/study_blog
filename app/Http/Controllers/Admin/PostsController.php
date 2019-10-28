@@ -45,7 +45,7 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = add($request->all());
+        $post = Post::add($request->all());
 
         return redirect()->route('admin.index');
     }
