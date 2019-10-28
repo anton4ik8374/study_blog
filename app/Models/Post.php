@@ -21,7 +21,7 @@ class Post extends Model
 
     //Атрибуты которые можно массово присваивать
     protected $fillable = [
-        'title','slug', 'content', 'status', 'views', 'is_featured', 'date'
+        'title','slug', 'content', 'status', 'views', 'date'
     ];
 
     //Все поля разрешено менять
