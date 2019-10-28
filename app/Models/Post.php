@@ -78,10 +78,14 @@ class Post extends Model
     {
         if ($image == null) { return;}
 
-            Storage::delete($this->image);
-            $fileName = $image->store('uplode');
-            $this->image = $fileName;
-            $this->save();
+        if($this->avatar !== null) {
+            Storage::delete($this->posts);
+        }
+        $fileName = $image->store('posts');
+        $newName = explode('/',$fileName);
+        $this->avatar = $newName[1];
+        $this->save();
+        return $newName[1];
 
     }
 

@@ -20,10 +20,13 @@ class ImagMiniEvent
      * @return void
      */
 
+    public $name;
+
     public $path;
 
-    public function __construct($path)
+    public function __construct($name, $path)
     {
+        $this->name = $name;
         $this->path = $path;
     }
 

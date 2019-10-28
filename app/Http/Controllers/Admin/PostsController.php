@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Events\ImagMiniEvent;
 use App\Models\Post;
 
 class PostsController extends Controller
@@ -47,6 +48,14 @@ class PostsController extends Controller
     {
         $post = Post::add($request->all());
 
+        if($request->hasFile('image')) {
+
+            $name = $post->uploadAvatar($request->file('image'));
+
+            event(new ImagMiniEvent($name, 'posts'));
+        }
+
+        $user->toggleUser($request->is_admin)->toggleBan($request->status);
         return redirect()->route('posts.index');
     }
 

@@ -46,9 +46,9 @@ class UsersController extends Controller
 
         if($request->hasFile('avatar')) {
 
-            $path = $user->uploadAvatar($request->file('avatar'));
+            $name = $user->uploadAvatar($request->file('avatar'));
 
-            event(new ImagMiniEvent($path));
+            event(new ImagMiniEvent($name, 'user'));
         }
 
         $user->toggleUser($request->is_admin)->toggleBan($request->status);
