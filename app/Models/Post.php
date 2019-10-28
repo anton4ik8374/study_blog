@@ -144,13 +144,24 @@ class Post extends Model
 
     }
 
-    public function getImages($images)
+    public function getImage()
     {
-        if($images == null ){
-            return '/storage/uplode/defaul_post.png';
+
+        if($this->image == null ){
+            return '/img/post/default_user.webp';
         }
 
-        return $images;
+        return '/storage/post/' . $this->image;
+
+    }
+
+    public function getCategoryTitle()
+    {
+
+    }
+
+    public function getTagsTitles()
+    {
 
     }
 
