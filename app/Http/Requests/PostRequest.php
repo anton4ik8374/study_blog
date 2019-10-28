@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'title' => 'required',
             'content' => 'required',
             'category_id' => 'nullable',
-            'status' => 'required',
+            'status' => 'nullable',
             'views' => 'nullable',
             'is_featured' => 'nullable',
             'image' => 'nullable|image',
@@ -40,7 +40,6 @@ class PostRequest extends FormRequest
     {
         return [
             'title:required'=>'Поле не может быть пустым!',
-            'title:min'=>'Минимальная длина 2 символа!'
         ];
     }
 }
