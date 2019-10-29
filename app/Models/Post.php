@@ -117,14 +117,13 @@ class Post extends Model
 
     public function toggleStatus($value = null)
     {
-        dd($value);
         if($value == null){
 
             return $this->setDraft();
 
         }
 
-            return $this->setPublic();
+        return $this->setPublic();
 
     }
 
