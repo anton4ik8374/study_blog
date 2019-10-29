@@ -53,7 +53,7 @@ class PostsController extends Controller
             $name = $post->uploadImage($request->file('image'));
 
             event(new ImagMiniEvent($name, 'posts'));
-
+        }
             $post->setCategory($request->get('category_id'));
 
             $post->setTags($request->get('tags'));
@@ -61,7 +61,7 @@ class PostsController extends Controller
             $post->toggleStatus($request->get('status'));
 
             $post->toggleFetured($request->get('is_featured'));
-        }
+
 
         return redirect()->route('posts.index');
     }
