@@ -72,6 +72,22 @@ class Post extends Model
     {
         Storage::delete($this->image);
         $this->delete();
+
+        if($this->image !== null) {
+
+            $this->deleteImages($this->image);
+
+            $this->deleteMiniImages($this->image);
+        }
+
+        $this->deleteTag();
+
+        $this->delete();
+    }
+
+    public function deleteTag()
+    {
+        $this->tags->delete();
     }
 
     public function uploadImage($image)

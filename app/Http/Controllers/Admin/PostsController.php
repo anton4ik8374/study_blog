@@ -144,6 +144,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id)->remove();
+
+        return redirect()->route('posts.index');
     }
 }
