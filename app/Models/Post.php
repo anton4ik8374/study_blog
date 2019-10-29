@@ -185,6 +185,11 @@ class Post extends Model
         $this->attributes['date'] = Carbon::createFromFormat('d/m/y',$value)->format('Y-m-d');
     }
 
+    public function getDateAttribute($value)
+    {
+       return Carbon::createFromFormat('Y-m-d',$value)->format('d/m/y');
+    }
+
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = $value == 'on' ? 1 : 0;
