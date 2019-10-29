@@ -161,6 +161,16 @@ class Post extends Model
         return '/storage/posts/' . $this->image;
 
     }
+    public function getImageMini()
+    {
+
+        if($this->image == null ){
+            return '/img/posts/default_user.webp';
+        }
+
+        return '/storage/posts/mini/' . $this->image;
+
+    }
 
     public function getCategoryTitle()
     {
@@ -180,16 +190,29 @@ class Post extends Model
         return 'Нет тегов';
     }
 
+    /**
+     * Mutator srt pluck date
+     * @param $value
+     */
     public function setDateAttribute($value)
     {
         $this->attributes['date'] = Carbon::createFromFormat('d/m/y',$value)->format('Y-m-d');
     }
 
+    /**
+     * Mutatur get pluck date
+     * @param $value
+     * @return string
+     */
     public function getDateAttribute($value)
     {
        return Carbon::createFromFormat('Y-m-d',$value)->format('d/m/y');
     }
 
+    /**
+     * Mutator set pluck Status
+     * @param $value
+     */
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = $value == 'on' ? 1 : 0;
@@ -202,6 +225,20 @@ class Post extends Model
         }
 
         return null;
+    }
+
+    public function deleteImages($name)
+    {
+        $path = '/posts/';
+
+        return Storage::delete($path . $name);
+    }
+
+    public function deleteMiniImages($name)
+    {
+        $path = '/posts/mini/';
+
+        return Storage::delete($path . $name);
     }
 
 }
