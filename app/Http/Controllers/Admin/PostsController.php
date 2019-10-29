@@ -131,7 +131,7 @@ class PostsController extends Controller
 
         $post->toggleFetured($request->get('is_featured'));
 
-        return redirect()->route('users.index');
+        return redirect()->route('posts.index');
 
     }
 

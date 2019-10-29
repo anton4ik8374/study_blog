@@ -32,7 +32,7 @@
             </div>
             
             <div class="form-group">
-              <img src="{{$post->getImageMini()}}" alt="" class="img-responsive" width="200">
+              <img src="{{$post->getImageMini()}}" alt="" class="img-responsive" width="100">
               <label for="exampleInputFile">Лицевая картинка</label>
               <input type="file" id="exampleInputFile" name="image">
 

@@ -183,8 +183,8 @@ class Post extends Model
 
     public function getTagsTitles()
     {
-        if($this->tags->isEmpty()) {
-            return implode(', ',$this->tags->pluck('title')->all());
+        if(!$this->tags->isEmpty()) {
+            return implode(', ', $this->tags->pluck('title')->all());
         }
 
         return 'Нет тегов';
