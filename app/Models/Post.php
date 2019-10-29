@@ -70,8 +70,6 @@ class Post extends Model
 
     public function remove()
     {
-        Storage::delete($this->image);
-        $this->delete();
 
         if($this->image !== null) {
 
