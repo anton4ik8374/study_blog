@@ -91,7 +91,7 @@ class PostsController extends Controller
 
         $tags = Tag::pluck('title', 'id')->all();
 
-        $selectedTags = $post->pluck('id')->get();
+        $selectedTags = $post->tags->pluck('id')->get();
         dd($selectedTags);
 
         return view('admin.posts.edit', compact('categories', 'tags', 'post', 'selectedTags'));
