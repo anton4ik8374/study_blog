@@ -103,9 +103,36 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $oldFileName = $post->image;
+
+        $post->edit($request->all());
+
+        if($request->hasFile('image')) {
+
+            if($oldFileName !== null) {
+
+                $post->deleteImages($oldFileName);
+
+                $post->deleteMiniImages($oldFileName);
+            }
+            $name = $post->uploadImage($request->file('image'));
+
+            event(new ImagMiniEvent($name, 'posts'));
+        }
+        $post->setCategory($request->get('category_id'));
+
+        $post->setTags($request->get('tags'));
+
+        $post->toggleStatus($request->get('status'));
+
+        $post->toggleFetured($request->get('is_featured'));
+
+        return redirect()->route('users.index');
+
     }
 
     /**
