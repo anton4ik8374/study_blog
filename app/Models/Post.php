@@ -21,7 +21,7 @@ class Post extends Model
 
     //Атрибуты которые можно массово присваивать
     protected $fillable = [
-        'title','slug', 'status', 'content', 'views', 'date'
+        'title','slug', 'content', 'views', 'date'
     ];
 
     //Все поля разрешено менять
@@ -119,11 +119,11 @@ class Post extends Model
     {
         if($value == null){
 
-            return $this->setDraft();
+            return $this->setPublic();
 
         }
 
-        return $this->setPublic();
+        return $this->setDraft();
 
     }
 
