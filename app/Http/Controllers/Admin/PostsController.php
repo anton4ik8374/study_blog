@@ -106,7 +106,7 @@ class PostsController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-        dd($request);
+        dump($request);
         $post = Post::find($id);
 
         $oldFileName = $post->image;
