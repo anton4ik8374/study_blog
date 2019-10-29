@@ -85,7 +85,7 @@ class Post extends Model
 
     public function deleteTag()
     {
-        $this->tags()->delete();
+        $this->tags()->detach();
     }
 
     public function uploadImage($image)
