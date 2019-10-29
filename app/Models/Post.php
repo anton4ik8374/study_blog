@@ -115,7 +115,7 @@ class Post extends Model
         $this->save();
     }
 
-    public function toggleStatus($value)
+    public function toggleStatus($value = null)
     {
         if($value == null){
 
@@ -139,7 +139,7 @@ class Post extends Model
         $this->save();
     }
 
-    public function toggleFetured($value)
+    public function toggleFetured($value = null)
     {
         if($value == null){
 
