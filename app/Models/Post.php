@@ -173,7 +173,7 @@ class Post extends Model
 
     public function getTagsTitles()
     {
-        if($this->tags !== null) {
+        if($this->tags->isEmpty()) {
             return implode(', ',$this->tags->pluck('title')->all());
         }
 
@@ -188,6 +188,15 @@ class Post extends Model
     public function setStatusAttribute($value)
     {
         $this->attributes['status'] = $value == 'on' ? 1 : 0;
+    }
+
+    public function getCategoryID()
+    {
+        if($this->category !== null) {
+            return $this->category->id;
+        }
+
+        return null;
     }
 
 }

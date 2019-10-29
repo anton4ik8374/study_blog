@@ -85,7 +85,15 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        $categories = Category::pluck('title', 'id')->all();
+
+        $tags = Tag::pluck('title', 'id')->all();
+
+        $selectedTags = $tags->pluck('id')->all();
+
+        return view('admin.posts.edit', compact('categories', 'tags', 'post', 'selectedTags'));
     }
 
     /**
