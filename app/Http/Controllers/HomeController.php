@@ -15,11 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('status',0)->get();
+        $posts = Post::where('status',0)->paginate(2);
 
-        foreach ($posts as $post){
-            dd($post->author->name);
-        }
 
         return view('pages.index', compact('posts'));
     }
