@@ -206,7 +206,11 @@ class Post extends Model
 
     public function hasCategory()
     {
+        if(!$this->tags->isEmpty()) {
+            return true;
+        }
 
+        return false;
     }
 
     /**
