@@ -89,7 +89,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="exampleInputEmail1">Описание</label>
-              <textarea name="description" id="" cols="30" rows="10" class="form-control" >{{$post->title}}</textarea>
+              <textarea name="description" id="" cols="30" rows="10" class="form-control" >{{$post->description}}</textarea>
           </div>
         </div>
           <div class="col-md-12">
