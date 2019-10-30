@@ -204,6 +204,11 @@ class Post extends Model
         return 'Нет тегов';
     }
 
+    public function hasCategory()
+    {
+
+    }
+
     /**
      * Mutator srt pluck date
      * @param $value

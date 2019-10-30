@@ -43,7 +43,7 @@ mix.copy('resources/admin/dist/fonts', 'public/fonts');
 mix.copy('resources/admin/dist/img', 'public/img');
 mix.copy('resources/admin/plugins/iCheck/minimal/blue.png', 'public/css');
 
-/*mix.styles([
+mix.styles([
     'resources/front/css/bootstrap.min.css',
     'resources/front/css/font-awesome.min.css',
     'resources/front/css/animate.min.css',
@@ -64,4 +64,4 @@ mix.scripts([
 ], 'public/js/front.js');
 
 mix.copy('resources/front/fonts', 'public/fonts');
-mix.copy('resources/front/images', 'public/images');*/
+mix.copy('resources/front/images', 'public/images');

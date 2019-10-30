@@ -94,7 +94,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="exampleInputEmail1">Полный текст</label>
-              <textarea name="content" id="" cols="30" rows="10" class="form-control" ></textarea>
+              <textarea name="content" id="" cols="30" rows="10" class="form-control" >{{old('content')}}</textarea>
           </div>
         </div>
       </div>
