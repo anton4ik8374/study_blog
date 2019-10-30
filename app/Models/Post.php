@@ -34,7 +34,7 @@ class Post extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
     public function tags()
@@ -206,7 +206,11 @@ class Post extends Model
 
     public function hasCategory()
     {
+        if(!$this->tags->isEmpty()) {
+            return true;
+        }
 
+        return false;
     }
 
     /**

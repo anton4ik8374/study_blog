@@ -17,6 +17,10 @@ class HomeController extends Controller
     {
         $posts = Post::where('status',0)->get();
 
+        foreach ($posts as $post){
+            dd($post->author());
+        }
+
         return view('pages.index', compact('posts'));
     }
 }
