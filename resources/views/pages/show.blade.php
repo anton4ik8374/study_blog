@@ -86,43 +86,43 @@
                         @endif
                     </div>
                 </div><!--blog next previous end-->
-                <div class="related-post-carousel"><!--related post carousel-->
-                    <div class="related-heading">
-                        <h4>You might also like</h4>
+            {{--<div class="related-post-carousel"><!--related post carousel-->
+                <div class="related-heading">
+                    <h4>You might also like</h4>
+                </div>
+                <div class="items">
+                @foreach($post->related() as $item)
+                    <div class="single-item">
+                        <a href="{{route('post.show', $item->slug)}}">
+                            <img src="{{$item->getImage()}}" alt="">
+
+                            <p>{{$item->title}}</p>
+                        </a>
                     </div>
-                    <div class="items">
-                    @foreach($post->related() as $item)
-                        <div class="single-item">
-                            <a href="{{route('post.show', $item->slug)}}">
-                                <img src="{{$item->getImage()}}" alt="">
+                @endforeach
 
-                                <p>{{$item->title}}</p>
-                            </a>
+                </div>
+            </div><!--related post carousel-->
+            @if(!$post->comments->isEmpty())
+                @foreach($post->getComments() as $comment)
+                    <div class="bottom-comment"><!--bottom comment-->
+                        <div class="comment-img">
+                            <img class="img-circle" src="{{$comment->author->getImage()}}" alt="" width="75" height="75">
                         </div>
-                    @endforeach
 
+                        <div class="comment-text">
+                            <h5>{{$comment->author->name}}</h5>
+
+                            <p class="comment-date">
+                                {{$comment->created_at->diffForHumans()}}
+                            </p>
+
+
+                            <p class="para">{{$comment->text}}</p>
+                        </div>
                     </div>
-                </div><!--related post carousel-->
-                {{--@if(!$post->comments->isEmpty())
-                    @foreach($post->getComments() as $comment)
-                        <div class="bottom-comment"><!--bottom comment-->
-                            <div class="comment-img">
-                                <img class="img-circle" src="{{$comment->author->getImage()}}" alt="" width="75" height="75">
-                            </div>
-
-                            <div class="comment-text">
-                                <h5>{{$comment->author->name}}</h5>
-
-                                <p class="comment-date">
-                                    {{$comment->created_at->diffForHumans()}}
-                                </p>
-
-
-                                <p class="para">{{$comment->text}}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif--}}
+                @endforeach
+            @endif--}}
 
                 <!-- end bottom comment-->
 
