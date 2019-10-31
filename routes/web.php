@@ -14,11 +14,12 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'/*, 'middleware'	=> 'auth'*/], function(){
     Route::get('/', 'DashboardController@index')->name('admin');
     Route::resource('/category', 'CategoriesController');
-    Route::resource('/tag', 'TagController');
-    Route::resource('/users', 'UsersController');
-    Route::resource('/posts', 'PostsController');
+    Route::resource('/tag', 'TagController')->except(['show']);
+    Route::resource('/users', 'UsersController')->except(['show']);
+    Route::resource('/posts', 'PostsController')->except(['show']);
 });
