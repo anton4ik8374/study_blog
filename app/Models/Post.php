@@ -269,4 +269,24 @@ class Post extends Model
         return Carbon::createFromFormat('d/m/y',$this->date)->format('F d, Y');
     }
 
+    public function hasPrevious()
+    {
+        return (self::where('id','<', $this->id)->max('id')) ? true: false;
+    }
+
+    public function getPrevious()
+    {
+        return self::where('id','<', $this->id)->max('id');
+    }
+
+    public function hasNext()
+    {
+        return (self::where('id','>', $this->id)->min('id')) ? true: false;
+    }
+
+    public function getNext()
+    {
+        return self::where('id','>', $this->id)->min('id');
+    }
+
 }

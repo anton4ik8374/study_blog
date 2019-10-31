@@ -48,7 +48,7 @@
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
                         invidunt ut labore et dolore magna aliquyam erat.</p>
                 </div><!--top comment end-->
-                {{--<div class="row"><!--blog next previous-->
+                <div class="row"><!--blog next previous-->
                     <div class="col-md-6">
                     	@if($post->hasPrevious())
                         <div class="single-blog-box">
@@ -103,7 +103,7 @@
 
                     </div>
                 </div><!--related post carousel-->
-                @if(!$post->comments->isEmpty())
+                {{--@if(!$post->comments->isEmpty())
                     @foreach($post->getComments() as $comment)
                         <div class="bottom-comment"><!--bottom comment-->
                             <div class="comment-img">
