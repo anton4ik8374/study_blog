@@ -86,7 +86,7 @@
                         @endif
                     </div>
                 </div><!--blog next previous end-->
-            {{--<div class="related-post-carousel"><!--related post carousel-->
+            <div class="related-post-carousel"><!--related post carousel-->
                 <div class="related-heading">
                     <h4>You might also like</h4>
                 </div>
@@ -103,7 +103,7 @@
 
                 </div>
             </div><!--related post carousel-->
-            @if(!$post->comments->isEmpty())
+            {{--@if(!$post->comments->isEmpty())
                 @foreach($post->getComments() as $comment)
                     <div class="bottom-comment"><!--bottom comment-->
                         <div class="comment-img">

@@ -294,4 +294,9 @@ class Post extends Model
         return self::find($postID);
     }
 
+    public function related()
+    {
+        return self::where('category_id', '=',$this->category_id)->get()->except($this->id);
+    }
+
 }
