@@ -146,7 +146,7 @@
                 @endif
                 
             </div>
-            @include('pages._sidebar')
+            {{--@include('pages._sidebar')--}}
         </div>
     </div>
 </div>
