@@ -94,7 +94,7 @@
                 @foreach($post->related() as $item)
                     <div class="single-item">
                         <a href="{{route('post.show', $item->slug)}}">
-                            <img src="{{$item->getImage()}}" alt="">
+                            <img src="{{$item->deleteMiniImages()}}" alt="">
 
                             <p>{{$item->title}}</p>
                         </a>
