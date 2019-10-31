@@ -9,9 +9,9 @@
                 @foreach($posts as $post)
                 <article class="post">
                     <div class="post-thumb">
-                        <a href="{{route('posts.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
+                        <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
 
-                        <a href="{{route('posts.show', $post->slug)}}" class="post-thumb-overlay text-center">
+                        <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                             <div class="text-uppercase text-center">View Post</div>
                         </a>
                     </div>
@@ -20,7 +20,7 @@
                         @if($post->hasCategory())
                             <h6><a href="{{route('category.show', $post->category->slug)}}"> {{$post->getCategoryTitle()}}</a></h6>
                         @endif
-                            <h1 class="entry-title"><a href="{{route('posts.show', $post->slug)}}">{{$post->title}}</a></h1>
+                            <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></h1>
 
 
                         </header>
@@ -28,7 +28,7 @@
                             {!!$post->description!!}
 
                             <div class="btn-continue-reading text-center text-uppercase">
-                                <a href="{{route('posts.show', $post->slug)}}" class="more-link">Continue Reading</a>
+                                <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                             </div>
                         </div>
                         <div class="social-share">

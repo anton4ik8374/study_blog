@@ -24,13 +24,13 @@
                         </div>
                         <div class="decoration">
                         @foreach($post->tags as $tag)
-                            <a href="{{route('tag.show', $tag->slug)}}" class="btn btn-default">{{$tag->title}}</a>
+                            <a href="{{--route('tag.show', $tag->slug)--}}" class="btn btn-default">{{$tag->title}}</a>
                         @endforeach
                         </div>
 
                         <div class="social-share">
 							<span
-                                    class="social-share-title pull-left text-capitalize">By {{$post->author->name}} On {{$post->getDate()}}</span>
+                                    class="social-share-title pull-left text-capitalize">By {{--$post->author->name--}} On {{$post->getDate()}}</span>
                             <ul class="text-center pull-right">
                                 <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -48,7 +48,7 @@
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
                         invidunt ut labore et dolore magna aliquyam erat.</p>
                 </div><!--top comment end-->
-                <div class="row"><!--blog next previous-->
+                {{--<div class="row"><!--blog next previous-->
                     <div class="col-md-6">
                     	@if($post->hasPrevious())
                         <div class="single-blog-box">
@@ -122,7 +122,7 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
+                @endif--}}
 
                 <!-- end bottom comment-->
 
