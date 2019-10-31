@@ -29,7 +29,7 @@ class ImagMiniListener
     {
 
         $img = Image::make(base_path('/storage/app/public/' . $event->path . '/'. $event->name));
-        $img->resize(100, null, function ($constraint) {
+        $img->resize(237, null, function ($constraint) {
             $constraint->aspectRatio();
         })->save(base_path('/storage/app/public/' . $event->path .'/mini/' . $event->name));
 
